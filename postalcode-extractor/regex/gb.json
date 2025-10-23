@@ -1,0 +1,15 @@
+{
+	"country": "GB",
+	"comment": "UK postcode is SO31 4NG",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>[A-Za-z][A-HJ-Ya-hj-y]?[0-9][0-9A-Za-z]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

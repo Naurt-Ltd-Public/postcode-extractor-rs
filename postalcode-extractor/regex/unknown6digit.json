@@ -1,0 +1,15 @@
+{
+	"country": "Unknown6Digit",
+	"comment": "This is for a generic 6 digit postalcode",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{6})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

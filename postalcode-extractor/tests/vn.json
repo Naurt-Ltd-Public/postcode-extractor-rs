@@ -1,0 +1,33 @@
+{
+	"country": "VN",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "23, Phố Tạ Quang Bửu, Hà Nội, Hà Nội 11615, Việt Nam",
+					"postcode": "11615"
+				},
+				{
+					"address": "18, Đường Xô Viết Nghệ Tĩnh, Phường 17, Bình Thạnh, 72321, Việt Nam",
+					"postcode": "72321"
+				}
+			],
+			"no_match": [
+				"18, 72321 Đường Xô Viết Nghệ Tĩnh, Phường 17, Bình Thạnh, Việt Nam"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "92908",
+					"postcode": "92908"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"country": "SK",
+	"comment": "Slovakia postcode is five digits, but spaced as XXX XX. Potential conflict with Czechia, Greece, Sweden",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{3} \\d{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

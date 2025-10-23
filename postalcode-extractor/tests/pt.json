@@ -1,0 +1,32 @@
+{
+	"country": "PT",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Rua da Liberdade, 34, 2º Esq. 4000-000 Porto Portugal",
+					"postcode": "4000-000"
+				},
+				{
+					"address": "Apartado 1234 4000-000 Porto Portugal",
+					"postcode": "4000-000"
+				}
+			],
+			"no_match": [
+				"Apartado 4000-000 1234 Porto Portugal"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "4000-000",
+					"postcode": "4000-000"
+				}
+			],
+			"no_match": [
+				"4000",
+				"4000000"
+			]
+		}
+	}
+}

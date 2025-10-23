@@ -1,0 +1,15 @@
+{
+	"country": "GR",
+	"comment": "Greek postcode is five digits, but spaced as XXX XX. Potential conflict with Czechia",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>(?:GR-)?\\d{3} \\d{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"country": "CA",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "10-123 1/2 Main St SE Montreal QC H3Z 2Y7",
+					"postcode": "H3Z 2Y7"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7 10-123 1/2 Main St SE Montreal QC"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "H3Z 2Y7",
+					"postcode": "H3Z 2Y7"
+				}
+			],
+			"no_match": [
+				"BN21 3LB"
+			]
+		}
+	}
+}

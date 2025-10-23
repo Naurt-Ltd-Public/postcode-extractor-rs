@@ -1,0 +1,27 @@
+{
+	"country": "AT",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Firma ABC Kundendienst Hauptstr. 5 1234 Musterstadt",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

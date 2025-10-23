@@ -1,0 +1,33 @@
+{
+	"country": "MY",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "11 Jalan Budi 1 Taman Budiman 42700 BANTING SELANGOR MALAYSIA",
+					"postcode": "42700"
+				},
+				{
+					"address": "Lot 323, 1st Floor, Bintang Commercial Centre 29 Jalan Sekilau 81300 JOHOR BAHRU JOHOR MALAYSIA",
+					"postcode": "81300"
+				}
+			],
+			"no_match": [
+				"Lot 323, 1st Floor, 81300 Bintang Commercial Centre 29 Jalan Sekilau JOHOR BAHRU JOHOR MALAYSIA"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "81300",
+					"postcode": "81300"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

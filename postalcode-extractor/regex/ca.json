@@ -1,0 +1,15 @@
+{
+	"country": "CA",
+	"comment": "Canada postcode is M5A 1A1",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d)\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"country": "BE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Dhr Paul Janssens Afdeling Kwaliteit Acme NV Gebouw A - Verdieping 3 Volklorenlaan 81 bus 15 2610 Wilrijk BELGIË",
+					"postcode": "2610"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

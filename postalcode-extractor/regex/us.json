@@ -1,0 +1,15 @@
+{
+	"country": "US",
+	"comment": "USA mostly uses 5 digit postalcodes, but there is an optional ZIP+4 of the format XXXXX-XXXX",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{5})(?:[-+]|\\b)(?<postcode_additional>\\d{4})?\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

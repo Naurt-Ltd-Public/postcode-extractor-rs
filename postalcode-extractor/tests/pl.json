@@ -1,0 +1,31 @@
+{
+	"country": "PL",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "ul. Wiejska 4/6 00-902 WARSZAWA POLAND (POLSKA) ",
+					"postcode": "00-902"
+				},
+				{
+					"address": "skrytka pocztowa nr 266 60-700 POZNAŃ 2",
+					"postcode": "60-700"
+				}
+			],
+			"no_match": [
+				"60-700 skrytka pocztowa nr 266 POZNAŃ 2"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "00-902",
+					"postcode": "00-902"
+				}
+			],
+			"no_match": [
+				"00902"
+			]
+		}
+	}
+}

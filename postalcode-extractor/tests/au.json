@@ -1,0 +1,27 @@
+{
+	"country": "AU",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "6 Belbin Pl, Macquarie ACT 2614, Australia",
+					"postcode": "2614"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

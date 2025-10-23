@@ -1,0 +1,28 @@
+{
+	"country": "NL",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Boschdijk 1092 5627 BX EINDHOVEN NETHERLANDS",
+					"postcode": "5627 BX"
+				}
+			],
+			"no_match": [
+				"6 Belbin Pl, Macquarie 2614 ACT, Australia",
+				"Boschdijk 5627 BX 1092 EINDHOVEN NETHERLANDS"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "5627 BX",
+					"postcode": "5627 BX"
+				}
+			],
+			"no_match": [
+				"5627"
+			]
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"country": "ID",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Jl. Surya No. 10 RT.05/RW.02 Kel. Cempaka Putih, Kec. Cempaka Baru Kota Jakarta Pusat 10640",
+					"postcode": "10640"
+				},
+				{
+					"address": "Perumahan Citra Harmoni Cluster Green Valley Blok A No. 6 Kel. Karang Satria Kec. Tambun Selatan Kab. Bekasi 17510",
+					"postcode": "17510"
+				},
+				{
+					"address": "Jl. Pahlawan Revolusi No. 28A Kel. Cipete Utara, Kec. Kebayoran Baru Kota Jakarta Selatan 12150",
+					"postcode": "12150"
+				},
+				{
+					"address": "PO Box 1234 JKS Jakarta 10001",
+					"postcode": "10001"
+				}
+			],
+			"no_match": [
+				"Kundendienst 01234 Hauptstr. 5 Musterstadt"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

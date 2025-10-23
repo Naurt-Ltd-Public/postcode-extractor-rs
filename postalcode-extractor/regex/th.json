@@ -1,0 +1,15 @@
+{
+	"country": "TH",
+	"comment": "Thai postcode is five digits",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{5})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

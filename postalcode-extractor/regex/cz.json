@@ -1,0 +1,15 @@
+{
+	"country": "CZ",
+	"comment": "Czechia postcode is five digits, but spaced as XXX XX. Optional CZ- prefix. Potential conflict with Greece",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>(CZ-)?\\d{3} \\d{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.4,
+			"group": "last"
+		}
+	}
+}

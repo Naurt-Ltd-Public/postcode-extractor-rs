@@ -1,0 +1,15 @@
+{
+	"country": "SG",
+	"comment": "Singapore postcode is six digits",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{6})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

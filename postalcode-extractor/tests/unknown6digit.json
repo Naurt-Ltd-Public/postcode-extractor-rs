@@ -1,0 +1,29 @@
+{
+	"country": "Unknown6Digit",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "016-46N, Aerodrome Area, Mango Tree Road, Bhubaneswar, 751020 INDIA",
+					"postcode": "751020"
+				}
+			],
+			"no_match": [
+				"016-46N, 751020 Aerodrome Area, Mango Tree Road, Bhubaneswar INDIA"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "751020",
+					"postcode": "751020"
+				}
+			],
+			"no_match": [
+				"1234567",
+				"12345",
+				"ABCDEF"
+			]
+		}
+	}
+}

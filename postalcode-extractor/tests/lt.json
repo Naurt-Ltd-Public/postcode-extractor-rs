@@ -1,0 +1,28 @@
+{
+	"country": "LT",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Sedos G. 19 16 Telšių K. LT-87113 Telšiai Telšių Apskritis LTU",
+					"postcode": "LT-87113"
+				}
+			],
+			"no_match": [
+				"LT-87113 Sedos G. 19 16 Telšių K. Telšiai Telšių Apskritis LTU",
+				"Sedos G. 19 16 Telšių K. 87113 Telšiai Telšių Apskritis LTU"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "LT-87113",
+					"postcode": "LT-87113"
+				}
+			],
+			"no_match": [
+				"87113"
+			]
+		}
+	}
+}

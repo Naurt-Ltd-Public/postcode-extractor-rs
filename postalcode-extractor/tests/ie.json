@@ -1,0 +1,28 @@
+{
+	"country": "IE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Lissadell Ballinfull Co. Sligo F91 ED70",
+					"postcode": "F91 ED70"
+				}
+			],
+			"no_match": [
+				"Lissadell F91 ED70 Ballinfull Co. Sligo"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "F91 ED70",
+					"postcode": "F91 ED70"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7",
+				"BN21 3LB"
+			]
+		}
+	}
+}

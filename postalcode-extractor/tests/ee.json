@@ -1,0 +1,29 @@
+{
+	"country": "EE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Aia tn 1-23 10615 Tallinn ESTONIA",
+					"postcode": "10615"
+				}
+			],
+			"no_match": [
+				"Aia 10615 tn 1-23 Tallinn ESTONIA"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "10615",
+					"postcode": "10615"
+				}
+			],
+			"no_match": [
+				"1234",
+				"123456",
+				"ABCDE"
+			]
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"country": "CY",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "RRUGA DËSHMORËT E KOMBIT 25 CY-1245 LIMOSSEL CYPRUS",
+					"postcode": "CY-1245"
+				},
+				{
+					"address": "RRUGA DËSHMORËT E KOMBIT 25 1245 LIMOSSEL CYPRUS",
+					"postcode": "1245"
+				}
+			],
+			"no_match": [
+				"1234 RRUGA DËSHMORËT E KOMBIT 25 LIMOSSEL CYPRUS"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "CY-1245",
+					"postcode": "CY-1245"
+				},
+				{
+					"original": "1245",
+					"postcode": "1245"
+				}
+			],
+			"no_match": [
+				"12345",
+				"CY-12345"
+			]
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"country": "BR",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Carlos Rossi Avenida João Jorge, 112, ap. 31 Vila Industrial Campinas - SP 13035-680",
+					"postcode": "13035-680"
+				}
+			],
+			"no_match": [
+				"13035-680 Carlos Rossi Avenida João Jorge, 112, ap. 31 Vila Industrial Campinas - SP"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "13035-680",
+					"postcode": "13035-680"
+				}
+			],
+			"no_match": [
+				"13035-ABC"
+			]
+		}
+	}
+}

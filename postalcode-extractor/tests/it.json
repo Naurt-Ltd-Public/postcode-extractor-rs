@@ -1,0 +1,33 @@
+{
+	"country": "IT",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Via Roma 35 81055 Santa Maria Capua Vetere CE",
+					"postcode": "81055"
+				},
+				{
+					"address": "Ufficio Roma Trullo CASELLA POSTALE 14123 00149 Roma RM",
+					"postcode": "00149"
+				}
+			],
+			"no_match": [
+				"01234 Kundendienst Hauptstr. 5 Musterstadt"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

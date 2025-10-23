@@ -1,0 +1,32 @@
+{
+	"country": "SE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Storgatan 1 112 01 Stockholm SWEDEN",
+					"postcode": "112 01"
+				},
+				{
+					"address": "Koppargränd 2 lgh 1105 331 51 Ösund SWEDEN",
+					"postcode": "331 51"
+				}
+			],
+			"no_match": [
+				"331 51 Koppargränd 2 lgh 1105 Ösund SWEDEN",
+				"Koppargränd 2 lgh 1105 33151 Ösund SWEDEN"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "331 51",
+					"postcode": "331 51"
+				}
+			],
+			"no_match": [
+				"33151"
+			]
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"country": "PL",
+	"comment": "Poland postcode is of the format XX-XXX",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{2}-\\d{3})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

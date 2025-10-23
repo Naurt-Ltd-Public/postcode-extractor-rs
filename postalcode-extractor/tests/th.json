@@ -1,0 +1,29 @@
+{
+	"country": "TH",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "238/54 Phaithong Village Bang Yai, Bang Yai Nonthaburi 11140 Thailand",
+					"postcode": "11140"
+				}
+			],
+			"no_match": [
+				"238/54 Phaithong 11140 Village Bang Yai, Bang Yai Nonthaburi Thailand"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

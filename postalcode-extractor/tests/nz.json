@@ -1,0 +1,28 @@
+{
+	"country": "NZ",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "43 Vogel Street Roslyn Palmerston North 4414",
+					"postcode": "4414"
+				}
+			],
+			"no_match": [
+				"43 Vogel Street 4414 Roslyn Palmerston North"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "6415",
+					"postcode": "6415"
+				}
+			],
+			"no_match": [
+				"56275",
+				"123"
+			]
+		}
+	}
+}

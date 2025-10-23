@@ -1,0 +1,33 @@
+{
+	"country": "SG",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "16 Sandilands Road SINGAPORE 546080 SINGAPORE",
+					"postcode": "546080"
+				},
+				{
+					"address": "Blk 35 Mandalay Road # 13-37 Mandalay Towers SINGAPORE 308215 SINGAPORE",
+					"postcode": "308215"
+				}
+			],
+			"no_match": [
+				"Blk 35 Mandalay 308215 Road # 13-37 Mandalay Towers SINGAPORE SINGAPORE"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "751020",
+					"postcode": "751020"
+				}
+			],
+			"no_match": [
+				"1234567",
+				"12345",
+				"ABCDEF"
+			]
+		}
+	}
+}

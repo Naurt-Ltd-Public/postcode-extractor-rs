@@ -1,0 +1,36 @@
+{
+	"country": "PH",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "123 Rizal Ave., Santa Cruz 1014 MANILA",
+					"postcode": "1014"
+				},
+				{
+					"address": "121 Epifanio Delos Santos Ave., Wack-wack Greenhills, Mandaluyong 1550 METRO MANILA",
+					"postcode": "1550"
+				},
+				{
+					"address": "23 MacArthur Hwy., San Matias, Santo Tomas 2020 PAMPANGA",
+					"postcode": "2020"
+				}
+			],
+			"no_match": [
+				"6415 Storgata 81A Molde"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "6415",
+					"postcode": "6415"
+				}
+			],
+			"no_match": [
+				"56275",
+				"123"
+			]
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"country": "Unknown5Digit",
+	"comment": "This is for a generic 5 digit postalcode (by far globally most common)",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{5})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.2,
+			"group": "last"
+		}
+	}
+}

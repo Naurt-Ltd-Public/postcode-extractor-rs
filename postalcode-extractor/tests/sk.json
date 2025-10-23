@@ -1,0 +1,27 @@
+{
+	"country": "SK",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Nezábudková 3084/25 845 45 Bratislava Slovensko",
+					"postcode": "845 45"
+				}
+			],
+			"no_match": [
+				"Nezábudková 3084/25 84545 Bratislava Slovensko"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "012 34",
+					"postcode": "012 34"
+				}
+			],
+			"no_match": [
+				"12345"
+			]
+		}
+	}
+}

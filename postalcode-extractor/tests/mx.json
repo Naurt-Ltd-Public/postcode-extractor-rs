@@ -1,0 +1,33 @@
+{
+	"country": "MX",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "C. Francisco I. Madero No. 115 Col. Nuevo Casas Grandes Centro 31700 Nuevo Casas Grandes, Chih.",
+					"postcode": "31700"
+				},
+				{
+					"address": "Lista de Correos Administración Postal Esperanza 85211 Cajeme, Son.",
+					"postcode": "85211"
+				}
+			],
+			"no_match": [
+				"Lista de 85211 Correos Administración Postal Esperanza Cajeme, Son."
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "85211",
+					"postcode": "85211"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

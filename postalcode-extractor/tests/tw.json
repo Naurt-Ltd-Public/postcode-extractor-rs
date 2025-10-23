@@ -1,0 +1,33 @@
+{
+	"country": "TW",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "11060台北市信義區市府路2號2樓",
+					"postcode": "11060"
+				},
+				{
+					"address": "110600台北市信義區市府路2號2樓",
+					"postcode": "110600"
+				}
+			],
+			"no_match": [
+				"台北市信義區市府路2號2樓11060",
+				"台北市信義區市府路2號2樓110600"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "751020",
+					"postcode": "751020"
+				}
+			],
+			"no_match": [
+				"1234567",
+				"ABCDEF"
+			]
+		}
+	}
+}

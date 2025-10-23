@@ -1,0 +1,27 @@
+{
+	"country": "LV",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Pērses iela, Centra rajons, Rīga, LV-1011, Latvia",
+					"postcode": "LV-1011"
+				}
+			],
+			"no_match": [
+				"6 Belbin Pl, Macquarie ACT 2614, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "LV-1011",
+					"postcode": "LV-1011"
+				}
+			],
+			"no_match": [
+				"1011"
+			]
+		}
+	}
+}

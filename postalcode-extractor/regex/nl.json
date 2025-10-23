@@ -1,0 +1,15 @@
+{
+	"country": "NL",
+	"comment": "Netherlands postcode are of the format 8011 PK",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{4}\\s{0,1}[A-Za-z]{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

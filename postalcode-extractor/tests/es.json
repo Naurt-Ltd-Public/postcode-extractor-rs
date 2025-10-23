@@ -1,0 +1,29 @@
+{
+	"country": "ES",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Paseo de la Castellana, 185, 5º B 29001 Madrid Madrid Spain",
+					"postcode": "29001"
+				}
+			],
+			"no_match": [
+				"Paseo de la Castellana, 29001 185, 5º B Madrid Madrid Spain"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "29001",
+					"postcode": "29001"
+				}
+			],
+			"no_match": [
+				"1234",
+				"123456",
+				"ABCDE"
+			]
+		}
+	}
+}

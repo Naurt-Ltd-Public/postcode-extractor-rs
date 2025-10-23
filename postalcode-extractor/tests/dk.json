@@ -1,0 +1,29 @@
+{
+	"country": "DK",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Solvej 5, 4. t.v. 5250 Odense SV",
+					"postcode": "5250"
+				}
+			],
+			"no_match": [
+				"Solvej 5, 5250 4. t.v. Odense SV"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "5250",
+					"postcode": "5250"
+				}
+			],
+			"no_match": [
+				"123",
+				"12345",
+				"ABCD"
+			]
+		}
+	}
+}

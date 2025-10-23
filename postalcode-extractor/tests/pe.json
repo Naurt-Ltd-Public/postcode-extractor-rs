@@ -1,0 +1,29 @@
+{
+	"country": "PE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Av. Larco 1301, Miraflores 15074 LIMA PERU ",
+					"postcode": "15074"
+				}
+			],
+			"no_match": [
+				"Kundendienst 01234 Hauptstr. 5 Musterstadt"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"country": "GR",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Doiranis 25 653 02 Kavala",
+					"postcode": "653 02"
+				},
+				{
+					"address": "Karkisias 6 GR-111 42 Athina Greece",
+					"postcode": "GR-111 42"
+				}
+			],
+			"no_match": [
+				"Doiranis 25 65302 Kavala",
+				"Karkisias 6 GR-11142 Athina Greece"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "GR-111 42",
+					"postcode": "GR-111 42"
+				},
+				{
+					"original": "653 02",
+					"postcode": "653 02"
+				}
+			],
+			"no_match": [
+				"GR-11142",
+				"65302"
+			]
+		}
+	}
+}

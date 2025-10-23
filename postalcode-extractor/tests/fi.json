@@ -1,0 +1,29 @@
+{
+	"country": "FI",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Mannerheimintie 30 as. 1 00100 HELSINKI Finland",
+					"postcode": "00100"
+				}
+			],
+			"no_match": [
+				"Mannerheimintie 00100 30 as. 1 HELSINKI Finland"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "00100",
+					"postcode": "00100"
+				}
+			],
+			"no_match": [
+				"1234",
+				"123456",
+				"ABCDE"
+			]
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"country": "CZ",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Brněnská 2256/16 123 07 Jitrnice",
+					"postcode": "123 07"
+				},
+				{
+					"address": "Brněnská 2256/16 CZ-123 08 Jitrnice",
+					"postcode": "CZ-123 08"
+				}
+			],
+			"no_match": [
+				"Brněnská 2256/16 12307 Jitrnice",
+				"123 07 Brněnská 2256/16 Jitrnice"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "123 09",
+					"postcode": "123 09"
+				},
+				{
+					"original": "CZ-123 01",
+					"postcode": "CZ-123 01"
+				}
+			],
+			"no_match": [
+				"12345"
+			]
+		}
+	}
+}

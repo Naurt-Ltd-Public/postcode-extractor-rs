@@ -1,0 +1,15 @@
+{
+	"country": "PT",
+	"comment": "Portugal postcode is of the format XXXX-XXX",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{4}[-]\\d{3})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.3,
+			"group": "last"
+		}
+	}
+}

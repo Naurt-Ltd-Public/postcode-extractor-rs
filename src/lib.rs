@@ -1,264 +1,233 @@
-use std::fmt::Display;
+use std::collections::BTreeMap;
 
-use regex::Match;
+use include_dir::{Dir, include_dir};
+use once_cell::sync::Lazy;
+use regex::{Match, Regex};
 
-mod countries;
-mod country_enums;
-mod statics;
+mod country;
+mod json_models;
 
-use crate::countries::{
-    BrRegex, CaRegex, FiveDigitRegex, FourRegex, JpRegex, LvRegex, NlRegex, PtRegex, SixRegex,
-    UkRegex,
+use crate::json_models::{PositionLogic, RegexJson};
+
+pub use country::{
+    Country, FIVE_DIGIT_NATIONS, FIVE_DIGIT_WITH_SPACE_NATIONS, FOUR_DIGIT_NATIONS,
+    SIX_DIGIT_NATIONS, UNIQUE_COUNTRIES,
 };
 
-// TODO: Move this elsewhere
-pub static FIVE_DIGIT_NATIONS: &'static [&str] = &[
-    "United States",
-    "Perú",
-    "France",
-    "Deutschland",
-    "Italia",
-    "Indonesia",
-    "ประเทศไทย",
-    "Việt Nam",
-    "대한민국", // South Korea
-    "Mongolia",
-];
-pub static FOUR_DIGIT_NATIONS: &'static [&str; 6] = &[
-    "Australia",
-    "New Zealand",
-    "Philippines",
-    "Denmark",
-    "Austria",
-    "Switzerland",
-];
-pub static SIX_DIGIT_NATIONS: &'static [&str] = &[
-    "Singapore",
-    "India",
-    "台灣", //Taiwan
-];
+static TEMPLATES_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/postalcode-extractor/regex");
 
-enum Percent {
-    Fifty,
-    Forty,
-    Thirty,
+struct RegexWrapper {
+    pub regex: Regex,
+    pub position_logic: PositionLogic,
 }
 
-impl Percent {
-    fn to_num(&self) -> f64 {
-        match self {
-            Self::Fifty => 0.5,
-            Self::Forty => 0.4,
-            Self::Thirty => 0.3,
-        }
-    }
-}
+static ALL: Lazy<BTreeMap<Country, RegexWrapper>> = Lazy::new(|| {
+    let mut m = BTreeMap::new();
+    for file in TEMPLATES_DIR.files() {
+        let text = file.contents_utf8().expect("Must be UTF8");
+        let regex_json: RegexJson = serde_json::from_str(text).unwrap();
 
-// TODO: sort this stuff out it's frankly shocking!
-fn is_more_than_50_percent_through_string(haystack: &str, mat: &Match) -> bool {
-    return is_more_than_x_percent_through_string(haystack, mat, Percent::Fifty);
-}
+        assert!(regex_json.regex.position_logic.position >= 0.0);
+        assert!(regex_json.regex.position_logic.position <= 1.0);
 
-fn is_more_than_30_percent_through_string(haystack: &str, mat: &Match) -> bool {
-    return is_more_than_x_percent_through_string(haystack, mat, Percent::Thirty);
-}
+        let regex = Regex::new(&regex_json.regex.engines.rust).unwrap();
 
-fn is_less_than_30_percent_through_string(haystack: &str, mat: &Match) -> bool {
-    return is_less_than_x_percent_through_string(haystack, mat, Percent::Thirty);
-}
-
-fn is_more_than_x_percent_through_string(haystack: &str, mat: &Match, percent: Percent) -> bool {
-    let hay_len = haystack.chars().count() as f64;
-    let match_char_idex = haystack[..mat.start()].chars().count() as f64;
-
-    return if match_char_idex / hay_len >= percent.to_num() {
-        true
-    } else {
-        false
-    };
-}
-
-fn is_less_than_x_percent_through_string(haystack: &str, mat: &Match, percent: Percent) -> bool {
-    let hay_len = haystack.chars().count() as f64;
-    let match_char_idex = haystack[..mat.start()].chars().count() as f64;
-
-    return if match_char_idex / hay_len <= percent.to_num() {
-        true
-    } else {
-        false
-    };
-}
-
-/// Enum for all possible postalcodes for each supported city
-#[derive(Debug)]
-pub enum PostalCodes {
-    /// United Kingdom
-    UK(String),
-    /// United States of America
-    US(PostcodeHolder),
-    /// Latvia
-    Lv(String),
-    /// Canada
-    CA(String),
-    /// Brazil
-    BR(String),
-    /// Portugall
-    PT(String),
-    /// Netherlands
-    NL(String),
-    /// Japan
-    JP(String),
-    /// An unknown country with a 5 digit postalcode. Either USA or Peru right now
-    Unknown5Digit(String),
-    /// An unknown country with a 4 digit postalcode: AU, NZ, PH
-    Unknown4Digit(String),
-    /// An unkown country with a 6 digit postalcode: IN, SG
-    Unknown6Digit(String),
-}
-
-impl PostalCodes {
-    pub fn get_inner<'a>(&'a self) -> &'a str {
-        return match self {
-            PostalCodes::UK(uk) => uk,
-            PostalCodes::US(uspostal) => &uspostal.base,
-            PostalCodes::Lv(lv) => lv,
-            PostalCodes::CA(ca) => ca,
-            PostalCodes::BR(br) => br,
-            PostalCodes::Unknown5Digit(five) => five,
-            PostalCodes::Unknown4Digit(four) => four,
-            PostalCodes::Unknown6Digit(six) => six,
-            PostalCodes::PT(pt) => pt,
-            PostalCodes::NL(nl) => nl,
-            PostalCodes::JP(jp) => jp,
+        let regex_wrapper = RegexWrapper {
+            regex: regex,
+            position_logic: regex_json.regex.position_logic.clone(),
         };
+
+        m.insert(regex_json.country.clone(), regex_wrapper);
     }
-}
+    m
+});
 
-/// Convenience type that represents a regex for each country
-///
-/// These regexes pull the postal code out of an address string
-pub struct PostalCodeRegexes {
-    pub uk: UkRegex,
-    pub ca: CaRegex,
-    pub five: FiveDigitRegex,
-    pub lv: LvRegex,
-    pub br: BrRegex,
-    pub four: FourRegex,
-    pub six: SixRegex,
-    pub pt: PtRegex,
-    pub nl: NlRegex,
-    pub jp: JpRegex,
-}
+static PRIORITY_LIST: Lazy<Vec<Country>> = Lazy::new(|| {
+    let mut shortlist = vec![];
+    for file in TEMPLATES_DIR.files() {
+        let text = file.contents_utf8().expect("Must be UTF8");
 
-impl PostalCodeRegexes {
-    /// Create regexes for each country which find the postalcode from an address
-    /// string
-    pub fn new() -> Self {
-        return Self {
-            uk: UkRegex::new(),
-            ca: CaRegex::new(),
-            five: FiveDigitRegex::new(),
-            lv: LvRegex::new(),
-            br: BrRegex::new(),
-            four: FourRegex::new(),
-            six: SixRegex::new(),
-            pt: PtRegex::new(),
-            nl: NlRegex::new(),
-            jp: JpRegex::new(),
-        };
+        let regex_json: RegexJson = serde_json::from_str(text).unwrap();
+
+        shortlist.push((regex_json.country.clone(), regex_json.priority));
     }
 
-    /// Given an address string, this function checks to see if it can match that
-    /// address string against any of the regexes. If it is able to, it returns the
-    /// postalcode, as well as the country with the matching postalcode
-    pub fn extract_postalcode_and_country(
-        &self,
-        haystack: &str,
-        check_position: bool,
-    ) -> Option<PostalCodes> {
-        // UK
-        if let Some(uk_postalcode) = self.uk.evaluate(haystack, check_position) {
-            return Some(PostalCodes::UK(uk_postalcode.base));
-        }
+    shortlist.sort_by(|a, b| b.1.cmp(&a.1));
 
-        // Canada
-        if let Some(ca_postalcode) = self.ca.evaluate(haystack, check_position) {
-            return Some(PostalCodes::CA(ca_postalcode.base));
-        }
+    shortlist.into_iter().map(|z| z.0).collect()
+});
 
-        // Japan
-        if let Some(jp_postcode) = self.jp.evaluate(haystack, check_position) {
-            return Some(PostalCodes::JP(jp_postcode.base));
-        }
-
-        // Brazil
-        if let Some(br_postalcode) = self.br.evaluate(haystack, check_position) {
-            return Some(PostalCodes::BR(br_postalcode.base));
-        }
-
-        // Latvia
-        if let Some(lv_pc) = self.lv.evaluate(haystack, check_position) {
-            return Some(PostalCodes::Lv(lv_pc.base));
-        }
-
-        // USA, Peru and all 5 digit postal codes
-        // We reuse the USA regex for brevity, but if no ZIP+4 is found, all you
-        // can say is it is a 5-digit nation
-        if let Some(five_pc) = self.five.evaluate(haystack, check_position) {
-            if five_pc.additional.is_none() {
-                return Some(PostalCodes::Unknown5Digit(five_pc.base));
-            } else {
-                return Some(PostalCodes::US(five_pc));
-            }
-        }
-
-        // Portugal
-        if let Some(pt_postalcode) = self.pt.evaluate(haystack, check_position) {
-            return Some(PostalCodes::PT(pt_postalcode.base));
-        }
-
-        // Netherlands
-        if let Some(nl_postcode) = self.nl.evaluate(haystack, check_position) {
-            return Some(PostalCodes::NL(nl_postcode.base));
-        }
-
-        // Six Digit
-        if let Some(six_postcode) = self.six.evaluate(haystack, check_position) {
-            return Some(PostalCodes::Unknown6Digit(six_postcode.base));
-        }
-
-        // Four digits
-        if let Some(four_pc) = self.four.evaluate(haystack, check_position) {
-            return Some(PostalCodes::Unknown4Digit(four_pc.base));
-        }
-
-        // Nothing
-
-        return None;
-    }
-}
-
-/// Struct for holding the USA ZIP
 #[derive(Debug)]
 pub struct PostcodeHolder {
-    /// The ZIP stem i.e. 12345. ALWAYS 5 digits
     pub base: String,
-    /// The +4. ALWAYS 4 digits e.g. 1234. This should NEVER include the - or +
-    ///
-    /// Optional as people don't always include them
     pub additional: Option<String>,
 }
 
-impl Display for PostcodeHolder {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        return if let Some(a) = &self.additional {
-            write!(f, "{}+{}", self.base, a)
-        } else {
-            write!(f, "{}", self.base)
-        };
-    }
+#[derive(Debug)]
+pub struct PostcodeWrapper {
+    pub country: Country,
+    pub postcode: PostcodeHolder,
 }
 
-pub trait PostCodeParser {
-    fn evaluate(&self, haystack: &str, check_position: bool) -> Option<PostcodeHolder>;
+#[derive(Debug)]
+pub enum PostcodeError {
+    UnsupportedCountry,
+}
+
+pub fn evaluate_single_country(
+    haystack: &str,
+    country: Country,
+    check_position: bool,
+) -> Result<Option<PostcodeHolder>, PostcodeError> {
+    let regex = ALL.get(&country).ok_or(PostcodeError::UnsupportedCountry)?;
+
+    let postalcode_captures = regex.regex.captures_iter(haystack);
+
+    // TODO: Sometimes we will need to take the first (e.g. Korea, Japan).
+    // The position logic struct can probably take care of that
+    let captures = match postalcode_captures.last() {
+        Some(x) => x,
+        None => return Ok(None),
+    };
+
+    let best_match = match captures.name("postcode") {
+        Some(x) => x,
+        None => return Ok(None),
+    };
+
+    if check_position {
+        if !check_positions(haystack, &best_match, &regex.position_logic) {
+            return Ok(None);
+        }
+    }
+
+    let additional = if country == Country::US {
+        if let Some(add_match) = captures.name("postcode_additional") {
+            Some(add_match.as_str().to_string())
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+
+    let best_match = best_match.as_str().to_string();
+    Ok(Some(PostcodeHolder {
+        base: best_match,
+        additional: additional,
+    }))
+}
+
+fn check_positions(haystack: &str, mat: &Match, position_logic: &PositionLogic) -> bool {
+    let hay_len = haystack.chars().count() as f64;
+    let match_char_idex = haystack[..mat.start()].chars().count() as f64;
+
+    let func = position_logic.operation.as_function();
+
+    return func(match_char_idex / hay_len, position_logic.position);
+}
+
+pub fn evaluate_all_countries(
+    haystack: &str,
+    check_position: bool,
+) -> Result<Option<PostcodeWrapper>, PostcodeError> {
+    for country in UNIQUE_COUNTRIES.iter().cloned() {
+        if let Ok(Some(pc)) = evaluate_single_country(haystack, country.clone(), check_position) {
+            return Ok(Some(PostcodeWrapper {
+                country: country,
+                postcode: pc,
+            }));
+        }
+    }
+
+    // 5 Digits but with a space
+    // We MIGHT be able to say it's Czechia if they include the CZ-
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::CZ, check_position) {
+        if pc.base.contains("CZ-") {
+            return Ok(Some(PostcodeWrapper {
+                country: Country::CZ,
+                postcode: pc,
+            }));
+        }
+    }
+
+    // We MIGHT be able to say it's Greece if they include the GR-
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::GR, check_position) {
+        if pc.base.contains("GR-") {
+            return Ok(Some(PostcodeWrapper {
+                country: Country::GR,
+                postcode: pc,
+            }));
+        }
+    }
+
+    // Generic 5 digit with space
+    if let Ok(Some(pc)) =
+        evaluate_single_country(haystack, Country::Unknown5DigitSpace, check_position)
+    {
+        return Ok(Some(PostcodeWrapper {
+            country: Country::Unknown5DigitSpace,
+            postcode: pc,
+        }));
+    }
+
+    // USA Special Case
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::US, check_position) {
+        if pc.additional.is_some() {
+            return Ok(Some(PostcodeWrapper {
+                country: Country::US,
+                postcode: pc,
+            }));
+        }
+    }
+
+    // Six digit
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::Unknown6Digit, check_position)
+    {
+        return Ok(Some(PostcodeWrapper {
+            country: Country::Unknown6Digit,
+            postcode: pc,
+        }));
+    }
+
+    // Taiwan HACK
+    // only if we check position
+    if check_position {
+        if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::TW, check_position) {
+            return Ok(Some(PostcodeWrapper {
+                country: Country::TW,
+                postcode: pc,
+            }));
+        }
+    }
+
+    // 5 digit
+
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::Unknown5Digit, check_position)
+    {
+        return Ok(Some(PostcodeWrapper {
+            country: Country::Unknown5Digit,
+            postcode: pc,
+        }));
+    }
+
+    // Cyprus special case
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::CY, check_position) {
+        if pc.base.contains("CY-") {
+            return Ok(Some(PostcodeWrapper {
+                country: Country::CY,
+                postcode: pc,
+            }));
+        }
+    }
+    // 4 digit
+
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::Unknown4Digit, check_position)
+    {
+        return Ok(Some(PostcodeWrapper {
+            country: Country::Unknown4Digit,
+            postcode: pc,
+        }));
+    }
+    return Ok(None);
 }

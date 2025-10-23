@@ -1,0 +1,29 @@
+{
+	"country": "FR",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "12 rue de la Montagne 01234 EXAMPLEVILLE",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"12 rue de la 01234 Montagne EXAMPLEVILLE"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"1234",
+				"123456",
+				"ABCDE"
+			]
+		}
+	}
+}

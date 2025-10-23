@@ -1,0 +1,15 @@
+{
+	"country": "AT",
+	"comment": "Austria postcode is four digits",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{4})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

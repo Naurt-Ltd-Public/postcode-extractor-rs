@@ -1,0 +1,27 @@
+{
+	"country": "HU",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Budapest Árpád fejedelem útja 82. fszt. 2 1036",
+					"postcode": "1036"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

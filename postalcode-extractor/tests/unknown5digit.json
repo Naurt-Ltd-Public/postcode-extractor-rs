@@ -1,0 +1,29 @@
+{
+	"country": "Unknown5Digit",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "455 Larkspur Dr. Apt 23 Baviera, CA  92908",
+					"postcode": "92908"
+				}
+			],
+			"no_match": [
+				"455 92908 Larkspur Dr. Apt 23 Baviera, CA"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "92908",
+					"postcode": "92908"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}

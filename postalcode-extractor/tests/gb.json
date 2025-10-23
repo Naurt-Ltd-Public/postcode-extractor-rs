@@ -1,0 +1,27 @@
+{
+	"country": "GB",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "3a High Street Hedge End SOUTHAMPTON SO31 4NG",
+					"postcode": "SO31 4NG"
+				}
+			],
+			"no_match": [
+				"3a High Street SO31 4NG Hedge End SOUTHAMPTON"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "SO31 4NG",
+					"postcode": "SO31 4NG"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7"
+			]
+		}
+	}
+}
