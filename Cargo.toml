@@ -1,6 +1,6 @@
 
 [package]
-name = "postcode-extractor-rs"
+name = "postcode_extractor"
 version = "0.1.0"
 edition = "2024"
 
