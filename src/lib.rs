@@ -57,13 +57,13 @@ static PRIORITY_LIST: Lazy<Vec<Country>> = Lazy::new(|| {
     shortlist.into_iter().map(|z| z.0).collect()
 });
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct PostcodeHolder {
     pub base: String,
     pub additional: Option<String>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct PostcodeWrapper {
     pub country: Country,
     pub postcode: PostcodeHolder,
