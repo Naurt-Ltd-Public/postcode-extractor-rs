@@ -80,6 +80,8 @@ pub enum Country {
     DK,
     /// Estonia
     EE,
+    /// Egypt
+    EG,
     /// Spain
     ES,
     /// Finland
@@ -167,6 +169,7 @@ impl Country {
             Country::DE => "Germany".to_string(),
             Country::DK => "Denmark".to_string(),
             Country::EE => "Estonia".to_string(),
+            Country::EG => "Egypt".to_string(),
             Country::ES => "Spain".to_string(),
             Country::FI => "Finland".to_string(),
             Country::FR => "France".to_string(),
@@ -221,6 +224,7 @@ impl Country {
             Country::DE => "Deutschland".to_string(),
             Country::DK => "Danmark".to_string(),
             Country::EE => "Eesti".to_string(),
+            Country::EG => "مصر".to_string(),
             Country::ES => "España".to_string(),
             Country::FI => "Suomen".to_string(),
             Country::FR => "France".to_string(),

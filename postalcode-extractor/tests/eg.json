@@ -1,0 +1,29 @@
+{
+    "country": "EG",
+    "tests": {
+        "position_check": {
+            "matches": [
+                {
+                    "address": "40 100 Street, Cairo, 12556, Egypt",
+                    "postcode": "12556"
+                }
+            ],
+            "no_match": [
+                "40 100 Street, Cairo, 1255, Egypt"
+            ]
+        },
+        "no_position_check": {
+            "matches": [
+                {
+                    "original": "29001",
+                    "postcode": "29001"
+                }
+            ],
+            "no_match": [
+                "1234",
+                "123456",
+                "ABCDE"
+            ]
+        }
+    }
+}
