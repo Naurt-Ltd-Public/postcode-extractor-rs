@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Countries which use four digits in the postcode, e.g. `1234`
 pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::AU,
     Country::NZ,
@@ -14,6 +15,7 @@ pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::NO,
 ];
 
+/// Countries which use five digits in the postcode, e.g. `12345`
 pub static FIVE_DIGIT_NATIONS: &[Country] = &[
     Country::US,
     Country::PE,
@@ -32,11 +34,14 @@ pub static FIVE_DIGIT_NATIONS: &[Country] = &[
     Country::MX,
 ];
 
+/// Countries which use six digits in the postcode, e.g. `123456`
 pub static SIX_DIGIT_NATIONS: &[Country] = &[Country::SG, Country::IN, Country::TW];
 
+/// Countries which use five digits in the postcode, but there's a mandatory space, e.g. `653 02`
 pub static FIVE_DIGIT_WITH_SPACE_NATIONS: &[Country] =
     &[Country::GR, Country::CZ, Country::SE, Country::SK];
 
+/// Countries which have a unique enough postcode to be identified e.g. UK and the SW17 0QN
 pub static UNIQUE_COUNTRIES: &[Country] = &[
     Country::GB,
     Country::CA,
@@ -50,56 +55,105 @@ pub static UNIQUE_COUNTRIES: &[Country] = &[
     Country::IE,
 ];
 
+/// All countries supported by the postcode extractor
 #[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, PartialOrd, Ord, Eq)]
 pub enum Country {
-    AT, // Austria
-    AU, // AUstralia
-    BE, // Belgium
-    BR, // Brazil
-    CA, // Canada
-    CH, // Switzerland
-    CY, // Cyprus
-    CZ, // Czechia
-    DE, // Germany
-    DK, // Denmark
-    EE, // Estonia
-    ES, // Spain
-    FI, // Finland
-    FR, // France
-    GB, // UK
-    GR, // Greece
-    HU, // Hungary
-    ID, // Indonesia
-    IE, // Ireland
-    IN, // India
-    IT, // Italy
-    JP, // Japan
-    KR, // Korea, Republic of. (South Korea)
-    LT, // Lithuania
-    LV, // Latvia
-    MX, // Mexico
-    MY, // Malaysia
-    NL, // Netherlands
-    NO, // Norway
-    NZ, // New Zealand
-    PE, // Peru
-    PH, // Philippines
-    PL, // Poland
-    PT, // Portugal
-    SE, // Sweden
-    SG, // Singapore
-    SK, // Slovakia
-    TH, // Thailand
-    TW, // Taiwan
-    US, // USA
-    VN, // Vietnam
+    /// Austria
+    AT,
+    /// Australia
+    AU,
+    /// Belgium
+    BE,
+    /// Brazil
+    BR,
+    /// Canada
+    CA,
+    /// Switzerland
+    CH,
+    /// Cyprus
+    CY,
+    /// Czechia
+    CZ,
+    /// Germany
+    DE,
+    /// Denmark
+    DK,
+    /// Estonia
+    EE,
+    /// Spain
+    ES,
+    /// Finland
+    FI,
+    /// France
+    FR,
+    /// UK
+    GB,
+    /// Greece
+    GR,
+    /// Hungary
+    HU,
+    /// Indonesia
+    ID,
+    /// Ireland
+    IE,
+    /// India
+    IN,
+    /// Italy
+    IT,
+    /// Japan
+    JP,
+    /// Korea, Republic of. (South Korea)
+    KR,
+    /// Lithuania
+    LT,
+    /// Latvia
+    LV,
+    /// Mexico
+    MX,
+    /// Malaysia
+    MY,
+    /// Netherlands
+    NL,
+    /// Norway
+    NO,
+    /// New Zealand
+    NZ,
+    /// Peru
+    PE,
+    /// Philippines
+    PH,
+    /// Poland
+    PL,
+    /// Portugal
+    PT,
+    /// Sweden
+    SE,
+    /// Singapore
+    SG,
+    /// Slovakia
+    SK,
+    /// Thailand
+    TH,
+    /// Taiwan
+    TW,
+    /// USA
+    US,
+    /// Vietnam
+    VN,
+    /// Hong Kong
+    HK,
+    /// Countries which use four digits in the postcode, e.g. `1234`
     Unknown4Digit,
+    /// Countries which use five digits in the postcode, e.g. `12345`
     Unknown5Digit,
+    /// Countries which use six digits in the postcode, e.g. `123456`
     Unknown6Digit,
+    /// Countries which use five digits in the postcode, but there's a mandatory space, e.g. `653 02`
     Unknown5DigitSpace,
 }
 
 impl Country {
+    /// Convert a country into its English name
     pub fn to_en_name(&self) -> String {
         return match self {
             Country::AT => "Austria".to_string(),
@@ -143,6 +197,7 @@ impl Country {
             Country::TW => "Taiwan".to_string(),
             Country::US => "United States".to_string(),
             Country::VN => "Vietnam".to_string(),
+            Country::HK => "Hong Kong".to_string(),
             Country::Unknown4Digit => "An Unknown Country With a 4 Digit Postcode".to_string(),
             Country::Unknown5Digit => "An Unknown Country With a 5 Digit Postcode".to_string(),
             Country::Unknown6Digit => "An Unknown Country With a 6 Digit Postcode".to_string(),
@@ -152,6 +207,7 @@ impl Country {
         };
     }
 
+    /// Convert a country into its best fit local name
     pub fn to_local_name(&self) -> String {
         return match self {
             Country::AT => "Österreich".to_string(),
@@ -195,6 +251,7 @@ impl Country {
             Country::TW => "台灣".to_string(),
             Country::US => "United States".to_string(),
             Country::VN => "Việt Nam".to_string(),
+            Country::HK => "香港".to_string(),
             Country::Unknown4Digit => "An Unknown Country With a 4 Digit Postcode".to_string(),
             Country::Unknown5Digit => "An Unknown Country With a 5 Digit Postcode".to_string(),
             Country::Unknown6Digit => "An Unknown Country With a 6 Digit Postcode".to_string(),

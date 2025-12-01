@@ -42,21 +42,6 @@ static ALL: Lazy<BTreeMap<Country, RegexWrapper>> = Lazy::new(|| {
     m
 });
 
-static PRIORITY_LIST: Lazy<Vec<Country>> = Lazy::new(|| {
-    let mut shortlist = vec![];
-    for file in TEMPLATES_DIR.files() {
-        let text = file.contents_utf8().expect("Must be UTF8");
-
-        let regex_json: RegexJson = serde_json::from_str(text).unwrap();
-
-        shortlist.push((regex_json.country.clone(), regex_json.priority));
-    }
-
-    shortlist.sort_by(|a, b| b.1.cmp(&a.1));
-
-    shortlist.into_iter().map(|z| z.0).collect()
-});
-
 #[derive(Debug, Clone)]
 pub struct PostcodeHolder {
     pub base: String,
@@ -74,6 +59,15 @@ pub enum PostcodeError {
     UnsupportedCountry,
 }
 
+/// Used to parse a postcode from an address of an already known country
+///
+/// Use `check_position` to control whether you are evaluating a whole address
+/// or a single postcode. For example
+///
+/// - `check_position = true`: "15 Main Road, EN35 0RS" will find "EN35 0RS"
+/// - `check_position = false`: "EN35 0RS" will find "EN35 0RS"
+///  
+///
 pub fn evaluate_single_country(
     haystack: &str,
     country: Country,
@@ -127,6 +121,17 @@ fn check_positions(haystack: &str, mat: &Match, position_logic: &PositionLogic) 
     return func(match_char_idex / hay_len, position_logic.position);
 }
 
+/// Will attempt to parse a postcode from an address or a single postcode, and
+/// determine which country it comes from.
+///
+/// Use `check_position` to control whether you are evaluating a whole address
+/// or a single postcode. For example
+///
+/// - `check_position = true`: "15 Main Road, EN35 0RS" will find "EN35 0RS" and identify the country as United Kingdom
+/// - `check_position = false`: "EN35 0RS" will find "EN35 0RS" and identify the country as United Kingdom
+///
+/// Note that some countries can not be uniquely identified, for example, if
+/// they use a five digit postcode
 pub fn evaluate_all_countries(
     haystack: &str,
     check_position: bool,
