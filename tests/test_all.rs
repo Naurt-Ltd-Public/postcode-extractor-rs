@@ -1,6 +1,6 @@
 use postcode_extractor::{
-    Country, FIVE_DIGIT_NATIONS, FIVE_DIGIT_WITH_SPACE_NATIONS, FOUR_DIGIT_NATIONS,
-    PostcodeWrapper, SIX_DIGIT_NATIONS, evaluate_all_countries,
+    Country, FIVE_DIGIT_ADDITIONAL_NATIONS, FIVE_DIGIT_NATIONS, FIVE_DIGIT_WITH_SPACE_NATIONS,
+    FOUR_DIGIT_NATIONS, PostcodeWrapper, SIX_DIGIT_NATIONS, evaluate_all_countries,
 };
 use serde::Deserialize;
 use std::fs;
@@ -105,10 +105,18 @@ fn verify_country(wrapper: &PostcodeWrapper, test_holder: &TestHolder, debug_msg
                 test_holder.country, wrapper.country, debug_msg
             )
         }
+    } else if FIVE_DIGIT_ADDITIONAL_NATIONS.contains(&test_holder.country) {
+        if wrapper.country != Country::Unknown5DigitAdditional
+            && wrapper.country != Country::Unknown5Digit
+        {
+            panic!(
+                "Expected {:?}; got {:?} {}",
+                test_holder.country, wrapper.country, debug_msg
+            )
+        }
     } else if FIVE_DIGIT_NATIONS.contains(&test_holder.country) {
         if wrapper.country != Country::Unknown5Digit
-            && !(wrapper.country == Country::US && test_holder.country == Country::US)
-            && !(wrapper.country == Country::TW && test_holder.country == Country::TW)
+            && wrapper.country != Country::Unknown5DigitAdditional
         {
             panic!(
                 "Expected {:?}; got {:?} {}",

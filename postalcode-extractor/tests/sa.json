@@ -1,0 +1,40 @@
+{
+	"country": "US",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "شارع إسلام أباد،, Al Mansourah, Riyadh 12684, Saudi Arabia",
+					"postcode": "12684"
+				},
+				{
+					"address": "شارع إسلام أباد،, Al Mansourah, Riyadh 12684-1234, Saudi Arabia",
+					"postcode": "12684",
+					"postcode_additional": "1234"
+				}
+			],
+			"no_match": [
+				"455 Larkspur 92908-1234 Dr. Apt 23 Baviera, CA"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "92908",
+					"postcode": "92908"
+				},
+				{
+					"original": "92908-1234",
+					"postcode": "92908",
+					"postcode_additional": "1234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE",
+				"929081234"
+			]
+		}
+	}
+}

@@ -10,8 +10,8 @@ mod json_models;
 use crate::json_models::{PositionLogic, RegexJson};
 
 pub use country::{
-    Country, FIVE_DIGIT_NATIONS, FIVE_DIGIT_WITH_SPACE_NATIONS, FOUR_DIGIT_NATIONS,
-    SIX_DIGIT_NATIONS, UNIQUE_COUNTRIES,
+    Country, FIVE_DIGIT_ADDITIONAL_NATIONS, FIVE_DIGIT_NATIONS, FIVE_DIGIT_WITH_SPACE_NATIONS,
+    FOUR_DIGIT_NATIONS, SIX_DIGIT_NATIONS, UNIQUE_COUNTRIES,
 };
 
 static TEMPLATES_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/postalcode-extractor/regex");
@@ -176,11 +176,11 @@ pub fn evaluate_all_countries(
         }));
     }
 
-    // USA Special Case
+    // USA and Saudi Arabia Special Case
     if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::US, check_position) {
         if pc.additional.is_some() {
             return Ok(Some(PostcodeWrapper {
-                country: Country::US,
+                country: Country::Unknown5DigitAdditional,
                 postcode: pc,
             }));
         }

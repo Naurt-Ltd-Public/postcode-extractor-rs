@@ -1,0 +1,29 @@
+{
+	"country": "DE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Sheikh Rashid Bin Saeed St - Hadbat Al Za`Faranah - Zone 1 - Abu Dhabi - 12345 - United Arab Emirates",
+					"postcode": "12345"
+				}
+			],
+			"no_match": [
+				"Sheikh Rashid Bin Saeed St 12345 - Hadbat Al Za`Faranah - Zone 1 - Abu Dhabi - United Arab Emirates"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "01234",
+					"postcode": "01234"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCDE"
+			]
+		}
+	}
+}
