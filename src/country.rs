@@ -264,7 +264,7 @@ impl Country {
             Country::PH => "Philippines".to_string(),
             Country::PL => "Poland".to_string(),
             Country::PT => "Portugal".to_string(),
-            Country::SA => "المملكة العربية السعودية".to_string(),
+            Country::SA => "الإمارات العربية المتحدة".to_string(),
             Country::SE => "Sweden".to_string(),
             Country::SG => "Singapore".to_string(),
             Country::SK => "Slovakia".to_string(),
