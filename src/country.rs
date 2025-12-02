@@ -228,7 +228,7 @@ impl Country {
     /// Convert a country into its best fit local name
     pub fn to_local_name(&self) -> String {
         return match self {
-            Country::AE => "الإمارات العربية المتحدة".to_string(),
+            Country::AE => "السعودية".to_string(),
             Country::AT => "Österreich".to_string(),
             Country::AU => "Australia".to_string(),
             Country::BE => "België".to_string(),
