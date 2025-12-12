@@ -11,7 +11,6 @@ pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::BE,
     Country::CY,
     Country::HU,
-    Country::EE,
     Country::NO,
 ];
 
