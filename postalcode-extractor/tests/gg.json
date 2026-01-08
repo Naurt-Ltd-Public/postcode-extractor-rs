@@ -1,0 +1,30 @@
+{
+	"country": "GG",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "53 Braye Gardens, Rue Du Tertre, Vale, GY3 5QR, Guernsey",
+					"postcode": "GY3 5QR"
+				}
+			],
+			"no_match": [
+				"3a High Street Hedge End SOUTHAMPTON SO31 4NG"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "GY3 5QR",
+					"postcode": "GY3 5QR"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7",
+				"BN32 5GB",
+				"IM9 2AJ",
+				"JE3 8FW"
+			]
+		}
+	}
+}

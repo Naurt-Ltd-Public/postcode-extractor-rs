@@ -1,0 +1,30 @@
+{
+	"country": "IM",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "124 Maghergarran, Port Erin, IM9 6DA, Isle of Man",
+					"postcode": "IM9 6DA"
+				}
+			],
+			"no_match": [
+				"3a High Street Hedge End SOUTHAMPTON SO31 4NG"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "IM9 6DA",
+					"postcode": "IM9 6DA"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7",
+				"BN32 5GB",
+				"JE3 8JS",
+				"GY3 5QR"
+			]
+		}
+	}
+}

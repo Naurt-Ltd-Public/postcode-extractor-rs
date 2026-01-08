@@ -1,0 +1,15 @@
+{
+	"country": "GG",
+	"comment": "Guernsey postcode is the same as the UK postcode, but always starts with GY",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>GY[0-9][0-9A-Z]? ?[0-9][A-Z]{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

@@ -46,6 +46,9 @@ pub static FIVE_DIGIT_WITH_SPACE_NATIONS: &[Country] =
 /// Countries which have a unique enough postcode to be identified e.g. UK and the SW17 0QN
 pub static UNIQUE_COUNTRIES: &[Country] = &[
     Country::GB,
+    Country::IM,
+    Country::JE,
+    Country::GG,
     Country::CA,
     Country::PT,
     Country::LT,
@@ -96,6 +99,8 @@ pub enum Country {
     FR,
     /// UK
     GB,
+    /// Guernsey
+    GG,
     /// Greece
     GR,
     /// Hungary
@@ -104,12 +109,16 @@ pub enum Country {
     ID,
     /// Ireland
     IE,
+    /// Isle of Man
+    IM,
     /// India
     IN,
     /// Italy
     IT,
     /// Japan
     JP,
+    /// Jersey
+    JE,
     /// Korea, Republic of. (South Korea)
     KR,
     /// Lithuania
@@ -185,13 +194,16 @@ impl Country {
             Country::FI => "Finland".to_string(),
             Country::FR => "France".to_string(),
             Country::GB => "United Kingdom".to_string(),
+            Country::GG => "Guernsey".to_string(),
             Country::GR => "Greece".to_string(),
             Country::HU => "Hungary".to_string(),
             Country::ID => "Indonesia".to_string(),
             Country::IE => "Ireland".to_string(),
+            Country::IM => "Isle of Man".to_string(),
             Country::IN => "India".to_string(),
             Country::IT => "Italy".to_string(),
             Country::JP => "Japan".to_string(),
+            Country::JE => "Jersey".to_string(),
             Country::KR => "South Korea".to_string(),
             Country::LT => "Lithuania".to_string(),
             Country::LV => "Latvia".to_string(),
@@ -234,7 +246,7 @@ impl Country {
             Country::BE => "België".to_string(),
             Country::BR => "Brasil".to_string(),
             Country::CA => "Canada".to_string(),
-            Country::CH => "Switzerland".to_string(),
+            Country::CH => "Suisse".to_string(),
             Country::CY => "κύπρος".to_string(),
             Country::CZ => "Czechia".to_string(),
             Country::DE => "Deutschland".to_string(),
@@ -242,15 +254,18 @@ impl Country {
             Country::EE => "Eesti".to_string(),
             Country::EG => "مصر".to_string(),
             Country::ES => "España".to_string(),
-            Country::FI => "Suomen".to_string(),
+            Country::FI => "Suomi".to_string(),
             Country::FR => "France".to_string(),
             Country::GB => "United Kingdom".to_string(),
+            Country::GG => "Guernsey".to_string(),
             Country::GR => "Ελλάδα".to_string(),
             Country::HU => "Magyarország".to_string(),
             Country::ID => "Indonesia".to_string(),
             Country::IE => "Ireland".to_string(),
+            Country::IM => "Isle of Man".to_string(),
             Country::IN => "India".to_string(),
             Country::IT => "Italia".to_string(),
+            Country::JE => "Jersey".to_string(),
             Country::JP => "日本".to_string(),
             Country::KR => "대한민국".to_string(),
             Country::LT => "Lithuania".to_string(),
@@ -258,7 +273,7 @@ impl Country {
             Country::MX => "Mexico".to_string(),
             Country::MY => "Malaysia".to_string(),
             Country::NL => "Nederland".to_string(),
-            Country::NO => "Norway".to_string(),
+            Country::NO => "Norge".to_string(),
             Country::NZ => "New Zealand".to_string(),
             Country::PE => "Perú".to_string(),
             Country::PH => "Philippines".to_string(),

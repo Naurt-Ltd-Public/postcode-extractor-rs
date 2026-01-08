@@ -95,7 +95,7 @@ pub fn evaluate_single_country(
         }
     }
 
-    let additional = if country == Country::US {
+    let additional = if FIVE_DIGIT_ADDITIONAL_NATIONS.contains(&country) {
         if let Some(add_match) = captures.name("postcode_additional") {
             Some(add_match.as_str().to_string())
         } else {

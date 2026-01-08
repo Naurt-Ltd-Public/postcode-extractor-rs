@@ -1,0 +1,15 @@
+{
+	"country": "IM",
+	"comment": "Isle of Man postcode is the same as the UK postcode, but always starts with IM",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>IM[0-9][0-9A-Z]? ?[0-9][A-Z]{2})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}

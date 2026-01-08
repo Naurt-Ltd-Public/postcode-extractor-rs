@@ -1,0 +1,30 @@
+{
+	"country": "JE",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Bel Event, 1 La Petite Route Des Mielles, St. Brelade, JE3 8JS, Jersey",
+					"postcode": "JE3 8JS"
+				}
+			],
+			"no_match": [
+				"3a High Street Hedge End SOUTHAMPTON SO31 4NG"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "JE3 8JS",
+					"postcode": "JE3 8JS"
+				}
+			],
+			"no_match": [
+				"H3Z 2Y7",
+				"BN32 5GB",
+				"IM9 2AJ",
+				"GY3 5QR"
+			]
+		}
+	}
+}
