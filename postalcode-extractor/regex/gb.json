@@ -4,7 +4,7 @@
 	"priority": 100,
 	"regex": {
 		"engines": {
-			"rust": "\\b(?<postcode>(?:(?:[A-FHK-Za-fhk-z][A-HJ-Ya-hj-y]?|G[^yY]?|I[^mM]?|J[^eE]?)[0-9][0-9A-Z]? ?[0-9][A-Z]{2}|GIR ?0AA))\\b"
+			"rust": "\\b(?<postcode>(?:(?:[A-FHK-Za-fhk-z][A-HJ-Ya-hj-y]?|G[^yY]?|I[^mM]?|J[^eE]?)[0-9][0-9A-Za-z]? ?[0-9][A-Za-z]{2}|GIR ?0AA))\\b"
 		},
 		"position_logic": {
 			"operation": "GT",
