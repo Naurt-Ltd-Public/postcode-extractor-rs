@@ -1,0 +1,27 @@
+{
+	"country": "LU",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Rue Notre Dame, 2240 Ville-Haute Luxembourg",
+					"postcode": "2240"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

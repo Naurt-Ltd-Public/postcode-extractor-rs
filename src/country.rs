@@ -12,6 +12,7 @@ pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::CY,
     Country::HU,
     Country::NO,
+    Country::LU
 ];
 
 /// Countries which use five digits in the postcode, e.g. `12345`
@@ -123,6 +124,8 @@ pub enum Country {
     KR,
     /// Lithuania
     LT,
+    /// Luxembourg
+    LU,
     /// Latvia
     LV,
     /// Mexico
@@ -206,6 +209,7 @@ impl Country {
             Country::JE => "Jersey".to_string(),
             Country::KR => "South Korea".to_string(),
             Country::LT => "Lithuania".to_string(),
+            Country::LU => "Luxembourg".to_string(),
             Country::LV => "Latvia".to_string(),
             Country::MX => "Mexico".to_string(),
             Country::MY => "Malaysia".to_string(),
@@ -269,6 +273,7 @@ impl Country {
             Country::JP => "日本".to_string(),
             Country::KR => "대한민국".to_string(),
             Country::LT => "Lithuania".to_string(),
+            Country::LU => "Luxembourg".to_string(),
             Country::LV => "Latvia".to_string(),
             Country::MX => "Mexico".to_string(),
             Country::MY => "Malaysia".to_string(),
