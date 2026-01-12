@@ -1,0 +1,27 @@
+{
+	"country": "SI",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "Dolničarjeva ulica 1, 1000 Ljubljana, Slovenia",
+					"postcode": "1000"
+				}
+			],
+			"no_match": [
+				"2614 6 Belbin Pl, Macquarie ACT, Australia"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "1234",
+					"postcode": "1234"
+				}
+			],
+			"no_match": [
+				"10111"
+			]
+		}
+	}
+}

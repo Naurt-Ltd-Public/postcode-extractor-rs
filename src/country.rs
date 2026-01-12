@@ -12,7 +12,8 @@ pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::CY,
     Country::HU,
     Country::NO,
-    Country::LU
+    Country::LU,
+    Country::SI
 ];
 
 /// Countries which use five digits in the postcode, e.g. `12345`
@@ -152,6 +153,8 @@ pub enum Country {
     SE,
     /// Singapore
     SG,
+    /// Slovenia
+    SI,
     /// Slovakia
     SK,
     /// Thailand
@@ -223,6 +226,7 @@ impl Country {
             Country::SA => "Saudi Arabia".to_string(),
             Country::SE => "Sweden".to_string(),
             Country::SG => "Singapore".to_string(),
+            Country::SI => "Slovenia".to_string(),
             Country::SK => "Slovakia".to_string(),
             Country::TH => "Thailand".to_string(),
             Country::TW => "Taiwan".to_string(),
@@ -287,6 +291,7 @@ impl Country {
             Country::SA => "السعودية".to_string(),
             Country::SE => "Sverige".to_string(),
             Country::SG => "Singapore".to_string(),
+            Country::SI => "Slovenia".to_string(),
             Country::SK => "Slovakia".to_string(),
             Country::TH => "ประเทศไทย".to_string(),
             Country::TW => "台灣".to_string(),
