@@ -126,6 +126,7 @@ fn verify_country(wrapper: &PostcodeWrapper, test_holder: &TestHolder, debug_msg
     } else if FOUR_DIGIT_NATIONS.contains(&test_holder.country) {
         if wrapper.country != Country::Unknown4Digit
             && !(wrapper.country == Country::CY && test_holder.country == Country::CY)
+            && !(wrapper.country == Country::LU && test_holder.country == Country::LU)
         {
             panic!(
                 "Expected {:?}; got {:?} {}",

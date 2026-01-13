@@ -6,6 +6,10 @@
 				{
 					"address": "Rue Notre Dame, 2240 Ville-Haute Luxembourg",
 					"postcode": "2240"
+				},
+				{
+					"address": "Rue Notre Dame, L-2240 Ville-Haute Luxembourg",
+					"postcode": "L-2240"
 				}
 			],
 			"no_match": [
@@ -17,6 +21,10 @@
 				{
 					"original": "1234",
 					"postcode": "1234"
+				},
+				{
+					"original": "L-1234",
+					"postcode": "L-1234"
 				}
 			],
 			"no_match": [

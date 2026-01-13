@@ -176,6 +176,7 @@ pub fn evaluate_all_countries(
         }));
     }
 
+    
     // USA and Saudi Arabia Special Case
     if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::US, check_position) {
         if pc.additional.is_some() {
@@ -225,6 +226,14 @@ pub fn evaluate_all_countries(
             }));
         }
     }
+
+    // Luxembourg special case with the L-
+    if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::LU, check_position) {
+        if pc.base.starts_with("L-") {
+            return Ok(Some(PostcodeWrapper { country: Country::LU, postcode: pc }))
+        }
+    }
+
     // 4 digit
 
     if let Ok(Some(pc)) = evaluate_single_country(haystack, Country::Unknown4Digit, check_position)

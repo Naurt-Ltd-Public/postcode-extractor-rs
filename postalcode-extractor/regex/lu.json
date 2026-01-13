@@ -1,14 +1,14 @@
 {
 	"country": "LU",
-	"comment": "Luxembourg postcode is four digits",
+	"comment": "Luxembourg postcode is four digits, but has an optional L- prefix",
 	"priority": 100,
 	"regex": {
 		"engines": {
-			"rust": "\\b(?<postcode>\\d{4})\\b"
+			"rust": "\\b(?<postcode>(?:L-)?\\d{4})\\b"
 		},
 		"position_logic": {
 			"operation": "GT",
-			"position": 0.3,
+			"position": 0.25,
 			"group": "last"
 		}
 	}
