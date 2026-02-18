@@ -1,0 +1,23 @@
+{
+  "country": "AU",
+  "tests": {
+    "position_check": {
+      "matches": [
+        {
+          "address": "11 Aloe Ct, Kewtown, Cape Town, 7764, South Africa",
+          "postcode": "7764"
+        }
+      ],
+      "no_match": ["2311 Aloe Ct, Kewtown, Cape Town, South Africa"]
+    },
+    "no_position_check": {
+      "matches": [
+        {
+          "original": "7764",
+          "postcode": "7764"
+        }
+      ],
+      "no_match": ["13829"]
+    }
+  }
+}

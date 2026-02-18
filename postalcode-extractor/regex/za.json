@@ -1,6 +1,6 @@
 {
-  "country": "AU",
-  "comment": "Australia postcode is four digits",
+  "country": "ZA",
+  "comment": "South Africa postcode is four digits",
   "priority": 100,
   "regex": {
     "engines": {

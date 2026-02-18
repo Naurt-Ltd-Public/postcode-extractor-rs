@@ -13,7 +13,8 @@ pub static FOUR_DIGIT_NATIONS: &[Country] = &[
     Country::HU,
     Country::NO,
     Country::LU,
-    Country::SI
+    Country::SI,
+    Country::ZA,
 ];
 
 /// Countries which use five digits in the postcode, e.g. `12345`
@@ -167,6 +168,8 @@ pub enum Country {
     VN,
     /// Hong Kong
     HK,
+    /// South Africa
+    ZA,
     /// Countries which use four digits in the postcode, e.g. `1234`
     Unknown4Digit,
     /// Countries which use five digits in the postcode, e.g. `12345`
@@ -233,6 +236,7 @@ impl Country {
             Country::US => "United States".to_string(),
             Country::VN => "Vietnam".to_string(),
             Country::HK => "Hong Kong".to_string(),
+            Country::ZA => "South Africa".to_string(),
             Country::Unknown4Digit => "An Unknown Country With a 4 Digit Postcode".to_string(),
             Country::Unknown5Digit => "An Unknown Country With a 5 Digit Postcode".to_string(),
             Country::Unknown6Digit => "An Unknown Country With a 6 Digit Postcode".to_string(),
@@ -298,6 +302,7 @@ impl Country {
             Country::US => "United States".to_string(),
             Country::VN => "Việt Nam".to_string(),
             Country::HK => "香港".to_string(),
+            Country::ZA => "South Africa".to_string(),
             Country::Unknown4Digit => "An Unknown Country With a 4 Digit Postcode".to_string(),
             Country::Unknown5Digit => "An Unknown Country With a 5 Digit Postcode".to_string(),
             Country::Unknown6Digit => "An Unknown Country With a 6 Digit Postcode".to_string(),
