@@ -1,0 +1,15 @@
+{
+	"country": "RO",
+	"comment": "Romania postcode is six digits",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "\\b(?<postcode>\\d{6})\\b"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.4,
+			"group": "last"
+		}
+	}
+}

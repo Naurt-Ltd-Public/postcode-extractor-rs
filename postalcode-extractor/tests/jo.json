@@ -1,0 +1,29 @@
+{
+	"country": "JO",
+	"tests": {
+		"position_check": {
+			"matches": [
+				{
+					"address": "شارع طرفة بن العبد, الشميساني, عمان, ناحية عمان, لواء قصبة عمان, عمان, 11187, الأردن",
+					"postcode": "11187"
+				}
+			],
+			"no_match": [
+				"3a High Street Hedge End SOUTHAMPTON SO31 4NG"
+			]
+		},
+		"no_position_check": {
+			"matches": [
+				{
+					"original": "52500",
+					"postcode": "52500"
+				}
+			],
+			"no_match": [
+				"123456",
+				"1234",
+				"ABCD"
+			]
+		}
+	}
+}

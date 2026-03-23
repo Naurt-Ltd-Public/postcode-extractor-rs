@@ -1,0 +1,15 @@
+{
+	"country": "BH",
+	"comment": "Bahrain postcode is three or four digits",
+	"priority": 100,
+	"regex": {
+		"engines": {
+			"rust": "(?<postcode>\\b\\d{3}\\b|\\b\\d{4}\\b)"
+		},
+		"position_logic": {
+			"operation": "GT",
+			"position": 0.5,
+			"group": "last"
+		}
+	}
+}
