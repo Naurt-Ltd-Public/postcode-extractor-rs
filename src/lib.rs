@@ -277,20 +277,5 @@ pub fn evaluate_all_countries(
 		}));
 	}
 
-	// 3 Digit i.e. Bahrain
-	// If it was 4 digit, the above would have got it, so we can rule that out
-	// So, if this matches, it is certain to be 3 and Bharain
-	// UNLESS there are just three digits for another reason, which is going to
-	// be somewhat common
-
-	if let Ok(Some(pc)) =
-		evaluate_single_country(haystack, Country::BH, check_position)
-	{
-		return Ok(Some(PostcodeWrapper {
-			country: Country::Unknown4Digit,
-			postcode: pc,
-		}));
-	}
-
 	return Ok(None);
 }

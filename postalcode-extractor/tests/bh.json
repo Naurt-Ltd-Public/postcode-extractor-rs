@@ -4,10 +4,6 @@
 		"position_check": {
 			"matches": [
 				{
-					"address": "1707 Road 229, Souq, 300 Bahrain",
-					"postcode": "300"
-				},
-				{
 					"address": "1707 Road 229, Souq, 0300 Bahrain",
 					"postcode": "0300"
 				}
@@ -18,10 +14,6 @@
 		},
 		"no_position_check": {
 			"matches": [
-				{
-					"original": "123",
-					"postcode": "123"
-				},
 				{
 					"original": "1234",
 					"postcode": "1234"
