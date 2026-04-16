@@ -6,10 +6,14 @@
 				{
 					"address": "3a High Street Hedge End SOUTHAMPTON SO31 4NG",
 					"postcode": "SO31 4NG"
+				},
+				{
+					"address": "39 wrexham ll127le wales uk",
+					"postcode": "ll127le"
 				}
 			],
 			"no_match": [
-				"3a High Street SO31 4NG Hedge End SOUTHAMPTON"
+				"3a SO31 4NG High Street Hedge End SOUTHAMPTON"
 			]
 		},
 		"no_position_check": {
@@ -20,8 +24,8 @@
 				},
 				{
 					"original": "rm3 7jj",
-					"postcode":	"rm3 7jj"				
-			}
+					"postcode": "rm3 7jj"
+				}
 			],
 			"no_match": [
 				"H3Z 2Y7",

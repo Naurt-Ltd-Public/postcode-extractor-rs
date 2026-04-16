@@ -8,7 +8,7 @@
 		},
 		"position_logic": {
 			"operation": "GT",
-			"position": 0.5,
+			"position": 0.3,
 			"group": "last"
 		}
 	}
