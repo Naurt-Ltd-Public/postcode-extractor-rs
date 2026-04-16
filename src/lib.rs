@@ -90,6 +90,12 @@ pub fn evaluate_single_country(
 	country: Country,
 	check_position: bool,
 ) -> Result<Option<PostcodeHolder>, PostcodeError> {
+	// These two regions do not use postcodes, but they're "supported" by this
+	// crate, to whatever extent it is possible to
+	if country == Country::QA || country == Country::HK {
+		return Ok(None);
+	}
+
 	let regex = ALL
 		.get(&country)
 		.ok_or(PostcodeError::UnsupportedCountry { requested: country })?;
