@@ -1,8 +1,9 @@
-use std::collections::BTreeMap;
+use std::{collections::BTreeMap, fmt::Display};
 
 use include_dir::{Dir, include_dir};
 use once_cell::sync::Lazy;
 use regex::{Match, Regex};
+use std::error::Error;
 
 mod country;
 mod json_models;
@@ -58,7 +59,21 @@ pub struct PostcodeWrapper {
 
 #[derive(Debug)]
 pub enum PostcodeError {
-	UnsupportedCountry,
+	UnsupportedCountry { requested: Country },
+}
+
+impl Error for PostcodeError {}
+
+impl Display for PostcodeError {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		match self {
+			Self::UnsupportedCountry { requested } => write!(
+				f,
+				"Requested parse for `{}` but country unsupported",
+				requested.to_en_name()
+			),
+		}
+	}
 }
 
 /// Used to parse a postcode from an address of an already known country
@@ -75,7 +90,9 @@ pub fn evaluate_single_country(
 	country: Country,
 	check_position: bool,
 ) -> Result<Option<PostcodeHolder>, PostcodeError> {
-	let regex = ALL.get(&country).ok_or(PostcodeError::UnsupportedCountry)?;
+	let regex = ALL
+		.get(&country)
+		.ok_or(PostcodeError::UnsupportedCountry { requested: country })?;
 
 	let postalcode_captures = regex.regex.captures_iter(haystack);
 
